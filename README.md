@@ -1,5 +1,5 @@
 # bootcampWeb
-Este repositorio contendrá todo el materia y ejercicios del bootcamp Desarrollo Web
+Este repositorio contendrá todo el material y ejercicios del bootcamp Desarrollo Web
 
 
 
