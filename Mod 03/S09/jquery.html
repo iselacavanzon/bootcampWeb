@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Interacción mediante jQuery</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-around;
+        font-family: 'Montserrat',serif;
+    }
+    .box {
+        width: 300px;
+        height: 300px;
+        border: 2px solid black;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center;
+    }
+    button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        font-family: 'Montserrat',serif;
+        color:cornflowerblue;
+        background-color: lavender ;
+        border-color: plum;
+
+    }
+</style>
+</head>
+<body>
+    <div>
+        <p style="color: cornflowerblue; font-size: 18px; font-family: 'Montserrat';"> Interacción mediante jquery</p>
+    </div>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <div class="button-container">
+        <button id="toggle-colors">Toggle Colors</button>
+        <button id="toggle-borders">Toggle Rounded Borders</button>
+        <button id="add-box">Add a New Box</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let boxes = $('.box');
+            let colors = ['rgb(100,149,237)', 'rgb(230,230,250)', 'rgb(221,160,221)'];
+            let colored = false;
+            let roundedBorders = false;
+
+            $('#toggle-colors').click(function() {
+                colored = !colored;
+                boxes.each(function(indice) {
+                    $(this).css('background-color', colored ? colors[indice] : 'transparent');
+                    //$(this).css( "backgroundColor", colors[indice]);
+                });
+            });
+
+            $('#toggle-borders').click(function() {
+                roundedBorders = !roundedBorders;
+                boxes.css('border-radius', roundedBorders ? '10px' : '0');
+            });
+
+            $('#add-box').click(function() {
+                let newBox = $('<div class="box"></div>').css('border', '1px solid black');
+                $('.container').append(newBox);
+            });
+        });
+    </script>
+</body>
+</html>
